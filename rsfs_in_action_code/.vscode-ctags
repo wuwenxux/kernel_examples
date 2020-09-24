@@ -1,0 +1,101 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/61cc66cf/
+INV_BLOCK	RealSFSInAction/real_sfs_ops.h	/^#define INV_BLOCK /;"	d
+INV_INODE	RealSFSInAction/real_sfs_ops.h	/^#define INV_INODE /;"	d
+REAL_SFS_DS_H	RealSFSInAction/real_sfs_ds.h	/^#define REAL_SFS_DS_H$/;"	d
+REAL_SFS_OPS_H	RealSFSInAction/real_sfs_ops.h	/^#define REAL_SFS_OPS_H$/;"	d
+ROOT_INODE_NUM	RealSFSInAction/real_sfs_ops.h	/^#define ROOT_INODE_NUM /;"	d
+S2V_INODE_NUM	RealSFSInAction/real_sfs_ops.h	/^#define S2V_INODE_NUM(/;"	d
+SFS_ENTRY_RATIO	RealSFSInAction/format_real_sfs.c	/^#define SFS_ENTRY_RATIO /;"	d	file:
+SFS_ENTRY_TABLE_BLOCK_START	RealSFSInAction/format_real_sfs.c	/^#define SFS_ENTRY_TABLE_BLOCK_START /;"	d	file:
+SIMULA_FS_BLOCK_SIZE	RealSFSInAction/real_sfs_ds.h	/^#define SIMULA_FS_BLOCK_SIZE /;"	d
+SIMULA_FS_BLOCK_SIZE_BITS	RealSFSInAction/real_sfs_ds.h	/^#define SIMULA_FS_BLOCK_SIZE_BITS /;"	d
+SIMULA_FS_DATA_BLOCK_CNT	RealSFSInAction/real_sfs_ds.h	/^#define SIMULA_FS_DATA_BLOCK_CNT /;"	d
+SIMULA_FS_ENTRY_SIZE	RealSFSInAction/real_sfs_ds.h	/^#define SIMULA_FS_ENTRY_SIZE /;"	d
+SIMULA_FS_FILENAME_LEN	RealSFSInAction/real_sfs_ds.h	/^#define SIMULA_FS_FILENAME_LEN /;"	d
+SIMULA_FS_TYPE	RealSFSInAction/real_sfs_ds.h	/^#define SIMULA_FS_TYPE /;"	d
+V2S_INODE_NUM	RealSFSInAction/real_sfs_ops.h	/^#define V2S_INODE_NUM(/;"	d
+block_size	RealSFSInAction/real_sfs_ds.h	/^	byte4_t block_size; \/* Unit of allocation *\/$/;"	m	struct:sfs_super_block	typeref:typename:byte4_t
+blocks	RealSFSInAction/real_sfs_ds.h	/^	byte4_t blocks[SIMULA_FS_DATA_BLOCK_CNT];$/;"	m	struct:sfs_file_entry	typeref:typename:byte4_t[]
+byte1_t	RealSFSInAction/real_sfs_ds.h	/^typedef unsigned char byte1_t;$/;"	t	typeref:typename:unsigned char
+byte4_t	RealSFSInAction/real_sfs_ds.h	/^typedef unsigned int byte4_t;$/;"	t	typeref:typename:unsigned int
+byte8_t	RealSFSInAction/real_sfs_ds.h	/^typedef unsigned long long byte8_t;$/;"	t	typeref:typename:unsigned long long
+clear_file_entries	RealSFSInAction/format_real_sfs.c	/^void clear_file_entries(int sfs_handle, sfs_super_block_t *sb)$/;"	f	typeref:typename:void
+data_block_start	RealSFSInAction/real_sfs_ds.h	/^	byte4_t data_block_start; \/* in blocks *\/$/;"	m	struct:sfs_super_block	typeref:typename:byte4_t
+entry_count	RealSFSInAction/real_sfs_ds.h	/^	byte4_t entry_count; \/* Total entries in the file system *\/$/;"	m	struct:sfs_super_block	typeref:typename:byte4_t
+entry_size	RealSFSInAction/real_sfs_ds.h	/^	byte4_t entry_size; \/* in bytes *\/$/;"	m	struct:sfs_super_block	typeref:typename:byte4_t
+entry_table_block_start	RealSFSInAction/real_sfs_ds.h	/^	byte4_t entry_table_block_start; \/* in blocks *\/$/;"	m	struct:sfs_super_block	typeref:typename:byte4_t
+entry_table_size	RealSFSInAction/real_sfs_ds.h	/^	byte4_t entry_table_size; \/* in blocks *\/$/;"	m	struct:sfs_super_block	typeref:typename:byte4_t
+fe	RealSFSInAction/format_real_sfs.c	/^sfs_file_entry_t fe; \/* All 0's *\/$/;"	v	typeref:typename:sfs_file_entry_t
+get_bit_pos	RealSFSInAction/real_sfs.c	/^static int get_bit_pos(unsigned int val)$/;"	f	typeref:typename:int	file:
+init_browsing	RealSFSInAction/real_sfs_ops.c	/^int init_browsing(sfs_info_t *info)$/;"	f	typeref:typename:int
+lock	RealSFSInAction/real_sfs_ds.h	/^	spinlock_t lock; \/* Used for protecting used_blocks access *\/$/;"	m	struct:sfs_info	typeref:typename:spinlock_t
+main	RealSFSInAction/format_real_sfs.c	/^int main(int argc, char *argv[])$/;"	f	typeref:typename:int
+name	RealSFSInAction/real_sfs_ds.h	/^	char name[SIMULA_FS_FILENAME_LEN + 1];$/;"	m	struct:sfs_file_entry	typeref:typename:char[]
+partition_size	RealSFSInAction/real_sfs_ds.h	/^	byte4_t partition_size; \/* in blocks *\/$/;"	m	struct:sfs_super_block	typeref:typename:byte4_t
+perms	RealSFSInAction/real_sfs_ds.h	/^	byte4_t perms; \/* Permissions only for user; Replicated for group & others *\/$/;"	m	struct:sfs_file_entry	typeref:typename:byte4_t
+read_entry_from_real_sfs	RealSFSInAction/real_sfs_ops.c	/^static int read_entry_from_real_sfs(sfs_info_t *info, int ino, sfs_file_entry_t *fe)$/;"	f	typeref:typename:int	file:
+read_from_real_sfs	RealSFSInAction/real_sfs_ops.c	/^static int read_from_real_sfs(sfs_info_t *info, byte4_t block, byte4_t offset, void *buf, byte4_/;"	f	typeref:typename:int	file:
+read_sb_from_real_sfs	RealSFSInAction/real_sfs_ops.c	/^static int read_sb_from_real_sfs(sfs_info_t *info, sfs_super_block_t *sb)$/;"	f	typeref:typename:int	file:
+reserved	RealSFSInAction/real_sfs_ds.h	/^	byte4_t reserved[SIMULA_FS_BLOCK_SIZE \/ 4 - 8];$/;"	m	struct:sfs_super_block	typeref:typename:byte4_t[]
+sb	RealSFSInAction/format_real_sfs.c	/^sfs_super_block_t sb =$/;"	v	typeref:typename:sfs_super_block_t
+sb	RealSFSInAction/real_sfs_ds.h	/^	sfs_super_block_t sb; \/* Our fs super block *\/$/;"	m	struct:sfs_info	typeref:typename:sfs_super_block_t
+sfs	RealSFSInAction/real_sfs.c	/^static struct file_system_type sfs =$/;"	v	typeref:struct:file_system_type	file:
+sfs	RealSFSInAction/real_sfs.c	/^static struct file_system_type sfs;$/;"	v	typeref:struct:file_system_type	file:
+sfs_aops	RealSFSInAction/real_sfs.c	/^static struct address_space_operations sfs_aops =$/;"	v	typeref:struct:address_space_operations	file:
+sfs_aops	RealSFSInAction/real_sfs.c	/^static struct address_space_operations sfs_aops;$/;"	v	typeref:struct:address_space_operations	file:
+sfs_create	RealSFSInAction/real_sfs_ops.c	/^int sfs_create(sfs_info_t *info, char *fn, int perms, sfs_file_entry_t *fe)$/;"	f	typeref:typename:int
+sfs_dops	RealSFSInAction/real_sfs.c	/^static struct file_operations sfs_dops =$/;"	v	typeref:struct:file_operations	file:
+sfs_exit	RealSFSInAction/real_sfs.c	/^static void __exit sfs_exit(void)$/;"	f	typeref:typename:void __exit	file:
+sfs_file_entry	RealSFSInAction/real_sfs_ds.h	/^typedef struct sfs_file_entry$/;"	s
+sfs_file_entry_t	RealSFSInAction/real_sfs_ds.h	/^} sfs_file_entry_t;$/;"	t	typeref:struct:sfs_file_entry
+sfs_file_release	RealSFSInAction/real_sfs.c	/^static int sfs_file_release(struct inode *inode, struct file *file)$/;"	f	typeref:typename:int	file:
+sfs_fill_super	RealSFSInAction/real_sfs.c	/^static int sfs_fill_super(struct super_block *sb, void *data, int silent)$/;"	f	typeref:typename:int	file:
+sfs_fops	RealSFSInAction/real_sfs.c	/^static struct file_operations sfs_fops =$/;"	v	typeref:struct:file_operations	file:
+sfs_fops	RealSFSInAction/real_sfs.c	/^static struct file_operations sfs_fops;$/;"	v	typeref:struct:file_operations	file:
+sfs_get_block	RealSFSInAction/real_sfs.c	/^static int sfs_get_block(struct inode *inode, sector_t iblock, struct buffer_head *bh_result, in/;"	f	typeref:typename:int	file:
+sfs_get_data_block	RealSFSInAction/real_sfs_ops.c	/^int sfs_get_data_block(sfs_info_t *info)$/;"	f	typeref:typename:int
+sfs_get_file_entry	RealSFSInAction/real_sfs_ops.c	/^int sfs_get_file_entry(sfs_info_t *info, int vfs_ino, sfs_file_entry_t *fe)$/;"	f	typeref:typename:int
+sfs_get_sb	RealSFSInAction/real_sfs.c	/^static int sfs_get_sb(struct file_system_type *fs_type, int flags, const char *devname, void *da/;"	f	typeref:typename:int	file:
+sfs_info	RealSFSInAction/real_sfs_ds.h	/^typedef struct sfs_info$/;"	s
+sfs_info_t	RealSFSInAction/real_sfs_ds.h	/^} sfs_info_t;$/;"	t	typeref:struct:sfs_info
+sfs_init	RealSFSInAction/real_sfs.c	/^static int __init sfs_init(void)$/;"	f	typeref:typename:int __init	file:
+sfs_inode_create	RealSFSInAction/real_sfs.c	/^static int sfs_inode_create(struct inode *parent_inode, struct dentry *dentry, int mode, struct /;"	f	typeref:typename:int	file:
+sfs_inode_lookup	RealSFSInAction/real_sfs.c	/^static struct dentry *sfs_inode_lookup(struct inode *parent_inode, struct dentry *dentry, struct/;"	f	typeref:struct:dentry *	file:
+sfs_inode_unlink	RealSFSInAction/real_sfs.c	/^static int sfs_inode_unlink(struct inode *parent_inode, struct dentry *dentry)$/;"	f	typeref:typename:int	file:
+sfs_iops	RealSFSInAction/real_sfs.c	/^static struct inode_operations sfs_iops =$/;"	v	typeref:struct:inode_operations	file:
+sfs_iops	RealSFSInAction/real_sfs.c	/^static struct inode_operations sfs_iops;$/;"	v	typeref:struct:inode_operations	file:
+sfs_iterate	RealSFSInAction/real_sfs.c	/^static int sfs_iterate(struct file *file, struct dir_context *ctx)$/;"	f	typeref:typename:int	file:
+sfs_list	RealSFSInAction/real_sfs_ops.c	/^int sfs_list(sfs_info_t *info, struct file *file, struct dir_context *ctx)$/;"	f	typeref:typename:int
+sfs_list	RealSFSInAction/real_sfs_ops.c	/^int sfs_list(sfs_info_t *info, struct file *file, void *dirent, filldir_t filldir)$/;"	f	typeref:typename:int
+sfs_lookup	RealSFSInAction/real_sfs_ops.c	/^int sfs_lookup(sfs_info_t *info, char *fn, sfs_file_entry_t *fe)$/;"	f	typeref:typename:int
+sfs_mount	RealSFSInAction/real_sfs.c	/^static struct dentry *sfs_mount(struct file_system_type *fs_type, int flags, const char *devname/;"	f	typeref:struct:dentry *	file:
+sfs_put_data_block	RealSFSInAction/real_sfs_ops.c	/^void sfs_put_data_block(sfs_info_t *info, int i)$/;"	f	typeref:typename:void
+sfs_put_super	RealSFSInAction/real_sfs.c	/^static void sfs_put_super(struct super_block *sb)$/;"	f	typeref:typename:void	file:
+sfs_readdir	RealSFSInAction/real_sfs.c	/^static int sfs_readdir(struct file *file, void *dirent, filldir_t filldir)$/;"	f	typeref:typename:int	file:
+sfs_readpage	RealSFSInAction/real_sfs.c	/^static int sfs_readpage(struct file *file, struct page *page)$/;"	f	typeref:typename:int	file:
+sfs_remove	RealSFSInAction/real_sfs_ops.c	/^int sfs_remove(sfs_info_t *info, char *fn)$/;"	f	typeref:typename:int
+sfs_root_inode	RealSFSInAction/real_sfs.c	/^static struct inode *sfs_root_inode;$/;"	v	typeref:struct:inode *	file:
+sfs_sops	RealSFSInAction/real_sfs.c	/^static struct super_operations sfs_sops =$/;"	v	typeref:struct:super_operations	file:
+sfs_sops	RealSFSInAction/real_sfs.c	/^static struct super_operations sfs_sops;$/;"	v	typeref:struct:super_operations	file:
+sfs_super_block	RealSFSInAction/real_sfs_ds.h	/^typedef struct sfs_super_block$/;"	s
+sfs_super_block_t	RealSFSInAction/real_sfs_ds.h	/^} sfs_super_block_t; \/* Making it of SIMULA_FS_BLOCK_SIZE *\/$/;"	t	typeref:struct:sfs_super_block
+sfs_update	RealSFSInAction/real_sfs_ops.c	/^int sfs_update(sfs_info_t *info, int vfs_ino, int *size, int *timestamp, int *perms)$/;"	f	typeref:typename:int
+sfs_update_file_entry	RealSFSInAction/real_sfs_ops.c	/^int sfs_update_file_entry(sfs_info_t *info, int vfs_ino, sfs_file_entry_t *fe)$/;"	f	typeref:typename:int
+sfs_write_begin	RealSFSInAction/real_sfs.c	/^static int sfs_write_begin(struct file *file, struct address_space *mapping,$/;"	f	typeref:typename:int	file:
+sfs_write_inode	RealSFSInAction/real_sfs.c	/^static int sfs_write_inode(struct inode *inode, int do_sync)$/;"	f	typeref:typename:int	file:
+sfs_writepage	RealSFSInAction/real_sfs.c	/^static int sfs_writepage(struct page *page, struct writeback_control *wbc)$/;"	f	typeref:typename:int	file:
+shut_browsing	RealSFSInAction/real_sfs_ops.c	/^void shut_browsing(sfs_info_t *info)$/;"	f	typeref:typename:void
+size	RealSFSInAction/real_sfs_ds.h	/^	byte4_t size; \/* in bytes *\/$/;"	m	struct:sfs_file_entry	typeref:typename:byte4_t
+timestamp	RealSFSInAction/real_sfs_ds.h	/^	byte4_t timestamp; \/* Seconds since Epoch *\/$/;"	m	struct:sfs_file_entry	typeref:typename:byte4_t
+type	RealSFSInAction/real_sfs_ds.h	/^	byte4_t type; \/* Magic number to identify the file system *\/$/;"	m	struct:sfs_super_block	typeref:typename:byte4_t
+used_blocks	RealSFSInAction/real_sfs_ds.h	/^	byte1_t *used_blocks; \/* Used blocks tracker *\/$/;"	m	struct:sfs_info	typeref:typename:byte1_t *
+vfs_sb	RealSFSInAction/real_sfs_ds.h	/^	struct super_block *vfs_sb; \/* Super block structure from VFS for this fs *\/$/;"	m	struct:sfs_info	typeref:struct:super_block *
+write_entry_to_real_sfs	RealSFSInAction/real_sfs_ops.c	/^static int write_entry_to_real_sfs(sfs_info_t *info, int ino, sfs_file_entry_t *fe)$/;"	f	typeref:typename:int	file:
+write_super_block	RealSFSInAction/format_real_sfs.c	/^void write_super_block(int sfs_handle, sfs_super_block_t *sb)$/;"	f	typeref:typename:void
+write_to_real_sfs	RealSFSInAction/real_sfs_ops.c	/^static int write_to_real_sfs(sfs_info_t *info, byte4_t block, byte4_t offset, void *buf, byte4_t/;"	f	typeref:typename:int	file:

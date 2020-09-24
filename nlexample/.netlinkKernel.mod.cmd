@@ -1,0 +1,1 @@
+cmd_/home/wafer/Documents/project/kernel-examples/nlexample/netlinkKernel.mod := { echo  /home/wafer/Documents/project/kernel-examples/nlexample/netlinkKernel.o; echo; } > /home/wafer/Documents/project/kernel-examples/nlexample/netlinkKernel.mod

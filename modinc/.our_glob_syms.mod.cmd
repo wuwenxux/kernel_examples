@@ -1,0 +1,1 @@
+cmd_/home/wafer/Documents/project/kernel-examples/modinc/our_glob_syms.mod := { echo  /home/wafer/Documents/project/kernel-examples/modinc/our_glob_syms.o; echo; } > /home/wafer/Documents/project/kernel-examples/modinc/our_glob_syms.mod

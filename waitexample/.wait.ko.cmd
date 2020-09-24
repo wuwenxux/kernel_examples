@@ -1,0 +1,1 @@
+cmd_/home/wafer/Documents/project/kernel-examples/waitexample/wait.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/wafer/Documents/project/kernel-examples/waitexample/wait.ko /home/wafer/Documents/project/kernel-examples/waitexample/wait.o /home/wafer/Documents/project/kernel-examples/waitexample/wait.mod.o;  true

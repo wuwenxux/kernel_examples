@@ -1,0 +1,20 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/61cc66cf/
+FIRST_MINOR	wait.c	/^#define FIRST_MINOR /;"	d	file:
+MINOR_CNT	wait.c	/^#define MINOR_CNT /;"	d	file:
+c_dev	wait.c	/^static struct cdev c_dev;$/;"	v	typeref:struct:cdev	file:
+cl	wait.c	/^static struct class *cl;$/;"	v	typeref:struct:class *	file:
+dev	wait.c	/^static dev_t dev;$/;"	v	typeref:typename:dev_t	file:
+flag	wait.c	/^static char flag = 'n';$/;"	v	typeref:typename:char	file:
+fops	wait.c	/^struct file_operations fops =$/;"	v	typeref:struct:file_operations
+open	wait.c	/^int open(struct inode *inode, struct file *filp)$/;"	f	typeref:typename:int
+read	wait.c	/^ssize_t read(struct file *filp, char *buff, size_t count, loff_t *offp)$/;"	f	typeref:typename:ssize_t
+release	wait.c	/^int release(struct inode *inode, struct file *filp)$/;"	f	typeref:typename:int
+wq_cleanup	wait.c	/^void wq_cleanup(void)$/;"	f	typeref:typename:void
+wq_init	wait.c	/^int wq_init (void)$/;"	f	typeref:typename:int
+write	wait.c	/^ssize_t write(struct file *filp, const char *buff, size_t count, loff_t *offp)$/;"	f	typeref:typename:ssize_t

@@ -1,0 +1,9 @@
+[2020-08-20 16:54:02.192] [sharedprocess] [info] main {"machineId":"1291e65d072d49ff020902ac8abae5d85ce9713652b19e756c69291d6beda05c","windowId":2}
+[2020-08-20 16:54:02.218] [sharedprocess] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/home/wafer/Documents/Projects/helloworld/~/.vscode-root/User/snippets'
+[2020-08-20 16:54:42.205] [sharedprocess] [info] Starting to clean up unused language packs.
+[2020-08-20 17:05:42.636] [sharedprocess] [info] Installing extension: ms-vscode.cpptools
+[2020-08-20 17:05:43.608] [sharedprocess] [info] Downloaded extension: ms-vscode.cpptools /home/wafer/Documents/Projects/helloworld/~/.vscode-root/CachedExtensionVSIXs/ms-vscode.cpptools-0.29.0
+[2020-08-20 17:05:43.789] [sharedprocess] [info] Extracted extension to /root/.vscode/extensions/.ms-vscode.cpptools-0.29.0: ms-vscode.cpptools
+[2020-08-20 17:05:43.789] [sharedprocess] [info] Renamed to /root/.vscode/extensions/ms-vscode.cpptools-0.29.0
+[2020-08-20 17:05:43.790] [sharedprocess] [info] Installation completed. ms-vscode.cpptools
+[2020-08-20 17:05:43.827] [sharedprocess] [info] Extensions installed successfully: ms-vscode.cpptools

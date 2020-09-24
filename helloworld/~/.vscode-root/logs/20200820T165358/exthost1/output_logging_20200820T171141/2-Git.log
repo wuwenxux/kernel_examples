@@ -1,0 +1,81 @@
+Looking for git in: git
+Using git 2.25.1 from git
+> git rev-parse --git-dir
+Open repository: /home/wafer/Documents/Projects
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+fatal: ambiguous argument 'master': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git show --textconv :netdev/snull.c
+> git ls-files --stage -- /home/wafer/Documents/Projects/netdev/snull.c
+> git show --textconv :netdev/snull.h
+> git ls-files --stage -- /home/wafer/Documents/Projects/netdev/snull.h
+> git show --textconv :netdev/.vscode/c_cpp_properties.json
+> git ls-files --stage -- /home/wafer/Documents/Projects/netdev/.vscode/c_cpp_properties.json
+> git check-ignore -v -z --stdin
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+fatal: ambiguous argument 'master': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+fatal: ambiguous argument 'master': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+fatal: ambiguous argument 'master': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+fatal: ambiguous argument 'master': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git show --textconv :netdev/snull.h
+> git ls-files --stage -- /home/wafer/Documents/Projects/netdev/snull.h
+> git show --textconv :netdev/.vscode/c_cpp_properties.json
+> git ls-files --stage -- /home/wafer/Documents/Projects/netdev/.vscode/c_cpp_properties.json
+> git show --textconv :netdev/snull.c
+> git ls-files --stage -- /home/wafer/Documents/Projects/netdev/snull.c
+> git show --textconv :netdev/snull.h
+> git ls-files --stage -- /home/wafer/Documents/Projects/netdev/snull.h
+> git show --textconv :netdev/.vscode/c_cpp_properties.json
+> git ls-files --stage -- /home/wafer/Documents/Projects/netdev/.vscode/c_cpp_properties.json
+> git show --textconv :netdev/.vscode/tasks.json
+> git ls-files --stage -- /home/wafer/Documents/Projects/netdev/.vscode/tasks.json
+> git check-ignore -v -z --stdin
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+fatal: ambiguous argument 'master': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname)
+> git remote --verbose
+> git config --get commit.template
+> git show --textconv :netdev/.vscode/c_cpp_properties.json
+> git ls-files --stage -- /home/wafer/Documents/Projects/netdev/.vscode/c_cpp_properties.json

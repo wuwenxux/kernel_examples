@@ -1,0 +1,2 @@
+/home/wafer/Documents/project/kernel-examples/modparam/module_param.o
+

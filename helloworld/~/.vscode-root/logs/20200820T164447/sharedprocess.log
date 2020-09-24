@@ -1,0 +1,2 @@
+[2020-08-20 16:44:50.810] [sharedprocess] [info] main {"machineId":"1291e65d072d49ff020902ac8abae5d85ce9713652b19e756c69291d6beda05c","windowId":2}
+[2020-08-20 16:44:50.839] [sharedprocess] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/home/wafer/Documents/Projects/helloworld/~/.vscode-root/User/snippets'

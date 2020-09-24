@@ -1,0 +1,38 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/61cc66cf/
+FIRST_MINOR	query_ioctl.c	/^#define FIRST_MINOR /;"	d	file:
+MINOR_CNT	query_ioctl.c	/^#define MINOR_CNT /;"	d	file:
+QUERY_CLR_VARIABLES	query_ioctl.h	/^#define QUERY_CLR_VARIABLES /;"	d
+QUERY_GET_VARIABLES	query_ioctl.h	/^#define QUERY_GET_VARIABLES /;"	d
+QUERY_IOCTL_H	query_ioctl.h	/^#define QUERY_IOCTL_H$/;"	d
+QUERY_SET_VARIABLES	query_ioctl.h	/^#define QUERY_SET_VARIABLES /;"	d
+__anon138ee04c0103	query_app.c	/^	{$/;"	g	function:main	file:
+__anon9780314b0108	query_ioctl.h	/^{$/;"	s
+c_dev	query_ioctl.c	/^static struct cdev c_dev;$/;"	v	typeref:struct:cdev	file:
+cl	query_ioctl.c	/^static struct class *cl;$/;"	v	typeref:struct:class *	file:
+clr_vars	query_app.c	/^void clr_vars(int fd)$/;"	f	typeref:typename:void
+dev	query_ioctl.c	/^static dev_t dev;$/;"	v	typeref:typename:dev_t	file:
+dignity	query_ioctl.c	/^static int status = 1, dignity = 3, ego = 5;$/;"	v	typeref:typename:int	file:
+dignity	query_ioctl.h	/^	int status, dignity, ego;$/;"	m	struct:__anon9780314b0108	typeref:typename:int
+e_clr	query_app.c	/^		e_clr,$/;"	e	enum:main::__anon138ee04c0103	file:
+e_get	query_app.c	/^		e_get,$/;"	e	enum:main::__anon138ee04c0103	file:
+e_set	query_app.c	/^		e_set$/;"	e	enum:main::__anon138ee04c0103	file:
+ego	query_ioctl.c	/^static int status = 1, dignity = 3, ego = 5;$/;"	v	typeref:typename:int	file:
+ego	query_ioctl.h	/^	int status, dignity, ego;$/;"	m	struct:__anon9780314b0108	typeref:typename:int
+get_vars	query_app.c	/^void get_vars(int fd)$/;"	f	typeref:typename:void
+main	query_app.c	/^int main(int argc, char *argv[])$/;"	f	typeref:typename:int
+my_close	query_ioctl.c	/^static int my_close(struct inode *i, struct file *f)$/;"	f	typeref:typename:int	file:
+my_ioctl	query_ioctl.c	/^static int my_ioctl(struct inode *i, struct file *f, unsigned int cmd, unsigned long arg)$/;"	f	typeref:typename:int	file:
+my_open	query_ioctl.c	/^static int my_open(struct inode *i, struct file *f)$/;"	f	typeref:typename:int	file:
+query_arg_t	query_ioctl.h	/^} query_arg_t;$/;"	t	typeref:struct:__anon9780314b0108
+query_fops	query_ioctl.c	/^static struct file_operations query_fops =$/;"	v	typeref:struct:file_operations	file:
+query_ioctl_exit	query_ioctl.c	/^static void __exit query_ioctl_exit(void)$/;"	f	typeref:typename:void __exit	file:
+query_ioctl_init	query_ioctl.c	/^static int __init query_ioctl_init(void)$/;"	f	typeref:typename:int __init	file:
+set_vars	query_app.c	/^void set_vars(int fd)$/;"	f	typeref:typename:void
+status	query_ioctl.c	/^static int status = 1, dignity = 3, ego = 5;$/;"	v	typeref:typename:int	file:
+status	query_ioctl.h	/^	int status, dignity, ego;$/;"	m	struct:__anon9780314b0108	typeref:typename:int

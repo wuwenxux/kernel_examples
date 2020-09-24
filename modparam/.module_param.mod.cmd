@@ -1,0 +1,1 @@
+cmd_/home/wafer/Documents/project/kernel-examples/modparam/module_param.mod := { echo  /home/wafer/Documents/project/kernel-examples/modparam/module_param.o; echo; } > /home/wafer/Documents/project/kernel-examples/modparam/module_param.mod

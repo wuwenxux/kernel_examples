@@ -1,0 +1,2 @@
+0x00000000	get_cool_cl	/home/wafer/Documents/project/kernel-examples/modinc/our_glob_syms	EXPORT_SYMBOL_GPL	
+0x00000000	cool_cl	/home/wafer/Documents/project/kernel-examples/modinc/our_glob_syms	EXPORT_SYMBOL	

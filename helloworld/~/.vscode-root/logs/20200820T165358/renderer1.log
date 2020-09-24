@@ -1,0 +1,49 @@
+[2020-08-20 17:00:28.745] [renderer1] [error] Unable to write into tasks configuration file because the file is dirty. Please save it first and then try again.: Error: Unable to write into tasks configuration file because the file is dirty. Please save it first and then try again.
+    at D.reject (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:5544:245)
+    at file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:5548:357
+    at async D.doWriteConfiguration (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:5541:403)
+[2020-08-20 17:10:03.064] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2020-08-20 17:10:10.209] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2020-08-20 17:10:26.755] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2020-08-20 17:17:08.740] [renderer1] [error] Cannot read property 'markers' of undefined: TypeError: Cannot read property 'markers' of undefined
+    at H.setTreeSelection (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:7231:970)
+    at H.refreshPanel (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:7231:811)
+    at H.onDidChangeModel (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:7237:411)
+    at file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:7236:690
+    at file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:92:235
+    at c.fire (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:95:801)
+    at t.MarkersModel.setResourceMarkers (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:3243:741)
+    at p.onMarkerChanged (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:3547:112)
+    at file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:3547:40
+    at c.fire (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:95:801)
+    at file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:91:915
+[2020-08-20 17:31:42.728] [renderer1] [error] TreeError [MarkersView] Tree element not found: [object Object]: Error: TreeError [MarkersView] Tree element not found: [object Object]
+    at t.ObjectTreeModel.getElementLocation (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:114:613)
+    at t.ObjectTreeModel.setCollapsed (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:113:855)
+    at G.expand (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:1115:277)
+    at H.autoReveal (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:7240:818)
+    at H.onActiveEditorChanged (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:7237:842)
+    at file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:7236:715
+    at file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:92:235
+    at c.fire (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:95:801)
+    at F.doHandleActiveEditorChangeEvent (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:6212:898)
+    at F.handleActiveEditorChange (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:6212:696)
+    at file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:6213:19
+    at c.fire (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:95:801)
+    at file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:6449:665
+    at async e.openEditor (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:6448:121)
+[2020-08-20 17:31:45.757] [renderer1] [error] TreeError [MarkersView] Tree element not found: [object Object]: Error: TreeError [MarkersView] Tree element not found: [object Object]
+    at t.ObjectTreeModel.getElementLocation (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:114:613)
+    at t.ObjectTreeModel.setCollapsed (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:113:855)
+    at G.expand (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:1115:277)
+    at H.autoReveal (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:7240:818)
+    at H.onActiveEditorChanged (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:7237:842)
+    at file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:7236:715
+    at file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:92:235
+    at c.fire (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:95:801)
+    at F.doHandleActiveEditorChangeEvent (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:6212:898)
+    at F.handleActiveEditorChange (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:6212:696)
+    at file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:6213:19
+    at c.fire (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:95:801)
+    at file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:6449:665
+    at async e.openEditor (file:///snap/code/40/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:6448:121)

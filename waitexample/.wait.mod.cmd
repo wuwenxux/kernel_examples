@@ -1,0 +1,1 @@
+cmd_/home/wafer/Documents/project/kernel-examples/waitexample/wait.mod := { echo  /home/wafer/Documents/project/kernel-examples/waitexample/wait.o; echo; } > /home/wafer/Documents/project/kernel-examples/waitexample/wait.mod

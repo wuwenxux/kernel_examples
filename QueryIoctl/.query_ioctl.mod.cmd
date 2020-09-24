@@ -1,0 +1,1 @@
+cmd_/home/wafer/Documents/project/kernel-examples/QueryIoctl/query_ioctl.mod := { echo  /home/wafer/Documents/project/kernel-examples/QueryIoctl/query_ioctl.o; echo; } > /home/wafer/Documents/project/kernel-examples/QueryIoctl/query_ioctl.mod
