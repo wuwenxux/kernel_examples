@@ -9,6 +9,7 @@
 #include <net/rtnetlink.h>
 #include <net/ip_tunnels.h>
 #include <net/addrconf.h>
+#include <linux/uaccess.h>
 
 #include "compat.h"
 #include "device.h"
@@ -88,7 +89,7 @@ int nw_packet_rx_poll(struct napi_struct *napi, int budget)
 	int work_done = 0;
 
 	if (unlikely(budget <= 0)) {
-printk("b1...\n");
+		printk("b1...\n");
 		return 0;
 	}
 
@@ -96,7 +97,7 @@ printk("b1...\n");
 
 		if (unlikely(napi_gro_receive(napi, skb) == GRO_DROP)) {
 			++dev->stats.rx_dropped;
-printk("b2...\n");
+			printk("b2...\n");
 		} else {
 			update_rx_stats(dev, skb->len);
 		}
@@ -177,12 +178,82 @@ static netdev_tx_t nw_xmit(struct sk_buff *skb, struct net_device *dev)
 	
 	return NETDEV_TX_OK;
 }
+static int nw_ioctl(struct net_device *dev ,struct ifreq *ifr, int cmd)
+{
 
+	struct  *i = netdev_priv(dev);
+	int ret = 0;
+	switch( cmd)
+	{
+		case NW_PEER:
+			ret = nw_ioctl_peer(ifr);
+			break;
+		case NW_SETPEER:
+			break;
+		default:
+			ret = -EINVAL;
+
+	}
+	return ret;
+	
+}
+static int nw_ioctl_peer(struct ifreq *ifr)
+{
+	struct peer_info  pr_info;
+	u32 type;
+	int err = 0;
+	if(copy_from_user(&type, ifr->ifr_ifru.ifru_data),sizeof(u32))
+	{
+		return -EFAULT;
+	}
+	switch(type)
+	{
+		case NW_SETPEER:
+			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
+				return -EFAULT;	
+			err = peer_info_set( &pr_info);
+			break;
+		case NW_FREEPEER:
+			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
+				return -EFAULT;
+			err = peer_free_peer(&pr_info);
+			break;
+		case NW_PEER_SET_SRC_IP:
+			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
+				return -EFAULT;
+			err = peer_set_src_ip(&pr_info);
+			break;
+		case NW_PEER_SET_DEST_IP:
+			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
+				return -EFAULT;
+			err = peer_set_src_ip(&pr_info);
+			break;
+		default :
+			err = -EINVAL;
+			printk(KERN_ERR "ngw_ioctl() unknown cmd type(%d)\n ",type);
+			break;
+	}
+	return err;
+}
+
+static int peer_info_set( struct nw_peer *pinfo)
+{
+	struct nw_peer *k_pinfo;
+	u32 ret = -EINVAL;
+	k_pinfo = kmalloc(sizeof(struct nw_peer),GFP_KERNEL);
+	if(k_pinfo == NULL)
+		return -ENOMEM;
+	memcpy(k_pinfo,pinfo,sizeof(struct nw_peer));
+	
+	return 0;
+
+}
 static const struct net_device_ops netdev_ops = {
 	.ndo_open		= nw_open,
 	.ndo_stop		= nw_stop,
 	.ndo_start_xmit		= nw_xmit,
-	.ndo_get_stats64	= ip_tunnel_get_stats64
+	.ndo_get_stats64	= ip_tunnel_get_stats64,
+	.ndo_do_ioctl = nw_ioctl,
 };
 
 static void nw_destruct(struct net_device *dev)

@@ -12,8 +12,29 @@
 #include <linux/socket.h>
 #include <linux/net.h>
 #include <linux/in.h>
+#include <linux/ioctl.h>
 
-#define MAX_QUEUED_PACKETS 1024
+/*ioctl cmds*/
+#define NW_STATISTIC (SIOCDEVPRIVATE)
+#define NW_PEER	(SIOCDEVPRIVATE + 1)
+#define NW_SETPEER					1
+#define NW_FREEPEER					2
+#define NW_PEER_SET_SRC_IP			3
+#define NW_PEER_SET_DEST_IP			4
+#define NW_PEER_GET_DEST_IP			5
+#define NW_PEER_PEER_IS_CLIENT 		6
+#define NW_PEER_SET_PORT			7
+#define NW_PEER_GET_PORT			8
+#define NW_PEER_QUEUED_PACKETS 		1024
+struct nw_peer
+{
+	u32 type;
+	struct in_addr src_addr;
+	struct in_addr dest_addr;
+	u16 srcport;
+	u16 destport;
+	bool is_src;
+};
 
 struct nw_device {
 	struct net_device *dev;
