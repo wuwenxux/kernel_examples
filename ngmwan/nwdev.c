@@ -11,8 +11,8 @@
 #include <net/addrconf.h>
 #include <linux/uaccess.h>
 
-#include "compat.h"
-#include "device.h"
+
+#include "nwdev.h"
 #include "udpsocket.h"
 
 static int nw_open(struct net_device *dev)
@@ -188,7 +188,8 @@ static int nw_ioctl(struct net_device *dev ,struct ifreq *ifr, int cmd)
 		case NW_PEER:
 			ret = nw_ioctl_peer(ifr);
 			break;
-		case NW_SETPEER:
+		case NW_DHCP:
+			ret = nw_ioctl_dhcp(ifr);
 			break;
 		default:
 			ret = -EINVAL;
@@ -208,26 +209,32 @@ static int nw_ioctl_peer(struct ifreq *ifr)
 	}
 	switch(type)
 	{
-		case NW_SETPEER:
+		case NW_SET_PEER:
 			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
 				return -EFAULT;	
-			err = peer_info_set( &pr_info);
+			err = nw_set_peer( &pr_info);
 			break;
-		case NW_FREEPEER:
+		case NW_GET_PEER :
+			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
+				return -EFAULT;	
+			err = nw_get_peer(&pr_info);
+			break;
+		case NW_FREE_PEER:
 			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
 				return -EFAULT;
-			err = peer_free_peer(&pr_info);
+			err = nw_free_peer(&pr_info);
 			break;
-		case NW_PEER_SET_SRC_IP:
+		case NW_ADD_PEER:
 			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
 				return -EFAULT;
-			err = peer_set_src_ip(&pr_info);
+			err = nw_add_peer(&pr_info);
 			break;
-		case NW_PEER_SET_DEST_IP:
+		case NW_DEL_PEER:
 			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
 				return -EFAULT;
-			err = peer_set_src_ip(&pr_info);
+			err = nw_del_peer(&pr_info);
 			break;
+	
 		default :
 			err = -EINVAL;
 			printk(KERN_ERR "ngw_ioctl() unknown cmd type(%d)\n ",type);
@@ -236,7 +243,7 @@ static int nw_ioctl_peer(struct ifreq *ifr)
 	return err;
 }
 
-static int peer_info_set( struct nw_peer *pinfo)
+static int  nw_set_peer( struct nw_peer *pinfo)
 {
 	struct nw_peer *k_pinfo;
 	u32 ret = -EINVAL;
@@ -247,6 +254,14 @@ static int peer_info_set( struct nw_peer *pinfo)
 	
 	return 0;
 
+}
+static int nw_add_peer(struct nw_peer *pinfo)
+{
+	return 0;
+}
+static in nw_del_peer(struct nw_peer *pinfo)
+{
+	return 0;
 }
 static const struct net_device_ops netdev_ops = {
 	.ndo_open		= nw_open,

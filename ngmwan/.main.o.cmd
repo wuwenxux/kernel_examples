@@ -1259,7 +1259,7 @@ deps_/home/wafer/Documents/project/kernel-examples/ngmwan/main.o := \
   include/uapi/linux/rtnetlink.h \
   include/uapi/linux/if_addr.h \
   include/net/netlink.h \
-  /home/wafer/Documents/project/kernel-examples/ngmwan/device.h \
+  /home/wafer/Documents/project/kernel-examples/ngmwan/nwdev.h \
   include/linux/ptr_ring.h \
   include/linux/if_arp.h \
     $(wildcard include/config/firewire/net.h) \

@@ -15,7 +15,7 @@ int nw_chk_ipv4_mask(char *src,char *chk_str)
     char tmp[NW_CLI_BUFSIZE];
     int chk_ret = 0;
 
-    memcpy(tmp,str,(sizeof(tmp) -1 ));
+    memcpy(tmp,src,(sizeof(tmp) -1 ));
     
     p = strtok(tmp,"/");
     if(p == NULL)

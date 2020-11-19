@@ -36,13 +36,8 @@ struct nw_cli_cmd_tbl
     int (*chk_func)(char *, char *);
     int (*call_func)(int, char **);
     int max_len;
-}
-typedef struct hist_tbl
-{
-    struct hist_tbl *next;
-    struct hist_tbl *prev;
-    char str[NW_CLI_BUFSIZE];
-}hist_tbl_t;
+ };
+
 /*system command*/
 typedef struct  nw_sys_cmd_tbl
 {
@@ -55,23 +50,24 @@ typedef struct  nw_sys_cmd_tbl
 void nw_call_cmd(char *);
 void nw_blank_del(char *);
 /* common call */
-
-/*peer info*/
+void nw_debug_print( char *str1, char *str2)
+{
+    char buf[32];
+    memset(buf,0,sizeof(buf));
+    sprintf(buf,"%s %s", str1, str2);
+    perror(buf);
+}
+/*peer info
 int nw_peer_usage(int ,char **);
 int nw_peer_entry_add(int ,char **);
 int nw_peer_entry_del(int ,char **);
 int nw_peer_entry_show(int ,char **);
 int nw_peer_get_ent_num(struct nw_peer_info*);
-int nw_peer_get_ent(struct nw_)
+*/
+int nw_peer_set(int ,char**);
+int nw_peer_get(int);
+//int nw_peer_get_ent(struct nw_)
 
-
-/*statistics */
-int nw_statistics(int ,char **);
-/*system*/
-int nw_set_txquelen(int, char **);
-int nw_set_backlog(int, char **);
-
-/*future related */
 
 /*check funcs*/
 int nw_chk_ipv4_mask(char *,char *);

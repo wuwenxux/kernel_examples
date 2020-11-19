@@ -1,1 +1,0 @@
-cmd_/home/wafer/Documents/project/kernel-examples/ngmwan/ngmwan.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/wafer/Documents/project/kernel-examples/ngmwan/ngmwan.ko /home/wafer/Documents/project/kernel-examples/ngmwan/ngmwan.o /home/wafer/Documents/project/kernel-examples/ngmwan/ngmwan.mod.o;  true

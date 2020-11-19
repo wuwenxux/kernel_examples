@@ -17,24 +17,30 @@
 /*ioctl cmds*/
 #define NW_STATISTIC (SIOCDEVPRIVATE)
 #define NW_PEER	(SIOCDEVPRIVATE + 1)
-#define NW_SETPEER					1
-#define NW_FREEPEER					2
-#define NW_PEER_SET_SRC_IP			3
-#define NW_PEER_SET_DEST_IP			4
-#define NW_PEER_GET_DEST_IP			5
-#define NW_PEER_PEER_IS_CLIENT 		6
-#define NW_PEER_SET_PORT			7
-#define NW_PEER_GET_PORT			8
-#define NW_PEER_QUEUED_PACKETS 		1024
-struct nw_peer
+#define NW_SET_PEER						1
+#define NW_GET_PEER						2
+#define NW_FREE_PEER					3
+#define NW_ADD_PEER						4
+#define NW_DEL_PEER						5
+#define NW_GET_PEER_NUMS				6
+struct nw_peer_entry
 {
 	u32 type;
+	u32 peer_id;
+	struct nw_peer_entry *next;
 	struct in_addr src_addr;
+	u32 ipv4mask;
+	
 	struct in_addr dest_addr;
 	u16 srcport;
 	u16 destport;
-	bool is_src;
+	bool mode; // cli or ser
 };
+struct nw_peer_info
+{
+	u32 type;
+	u32 num_of_peers;
+}; 
 
 struct nw_device {
 	struct net_device *dev;
