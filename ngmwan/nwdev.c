@@ -3,6 +3,7 @@
 #include <linux/rtnetlink.h>
 #include <linux/inet.h>
 #include <linux/netdevice.h>
+#include <linux/string.h>
 #include <linux/inetdevice.h>
 #include <linux/etherdevice.h>
 #include <linux/suspend.h>
@@ -14,6 +15,19 @@
 
 #include "nwdev.h"
 #include "udpsocket.h"
+/*peer func*/
+static int  nw_peer_entry_set( struct nw_peer_entry *);
+static int  nw_peer_entry_add( struct nw_peer_entry *);
+static int  nw_peer_entry_del( struct nw_peer_entry *);
+static int  nw_peer_entry_get( struct nw_peer_entry *);
+static int nw_peer_entry_num(struct nw_peer_entry *);
+static int nw_peer_entry_free(struct nw_peer_entry *);
+static int nw_ioctl_peer(struct ifreq *ifr);
+/*dhcp func*/
+static int nw_ioctl_dhcp(struct ifreq *ifr)
+{
+	return 0;
+}
 
 static int nw_open(struct net_device *dev)
 {
@@ -181,10 +195,14 @@ static netdev_tx_t nw_xmit(struct sk_buff *skb, struct net_device *dev)
 static int nw_ioctl(struct net_device *dev ,struct ifreq *ifr, int cmd)
 {
 
-	struct  *i = netdev_priv(dev);
+	struct  nw_device *nw  = netdev_priv(dev);
 	int ret = 0;
 	switch( cmd)
 	{
+		case NW_STATISTIC:
+			if(copy_to_user(ifr->ifr_ifru.ifru_data,nw,sizeof(struct nw_device)))
+				return -EFAULT;
+			break;
 		case NW_PEER:
 			ret = nw_ioctl_peer(ifr);
 			break;
@@ -193,46 +211,46 @@ static int nw_ioctl(struct net_device *dev ,struct ifreq *ifr, int cmd)
 			break;
 		default:
 			ret = -EINVAL;
-
 	}
 	return ret;
 	
 }
 static int nw_ioctl_peer(struct ifreq *ifr)
 {
-	struct peer_info  pr_info;
+	struct   nw_peer_info pr_info;
+	struct	nw_peer_entry npe;
 	u32 type;
 	int err = 0;
-	if(copy_from_user(&type, ifr->ifr_ifru.ifru_data),sizeof(u32))
+	if(copy_from_user(&type, ifr->ifr_ifru.ifru_data,sizeof(u32)))
 	{
 		return -EFAULT;
 	}
 	switch(type)
 	{
 		case NW_SET_PEER:
-			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
+			if(copy_from_user(&npe,ifr->ifr_ifru.ifru_data,sizeof(struct nw_peer_entry)))
 				return -EFAULT;	
-			err = nw_set_peer( &pr_info);
+			err = nw_peer_entry_set( &npe);
 			break;
 		case NW_GET_PEER :
-			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
+			if(copy_from_user(&npe,ifr->ifr_ifru.ifru_data,sizeof(struct nw_peer_entry)))
 				return -EFAULT;	
-			err = nw_get_peer(&pr_info);
+			err = nw_peer_entry_get(&npe);
 			break;
 		case NW_FREE_PEER:
-			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
+			if(copy_from_user(&npe,ifr->ifr_ifru.ifru_data,sizeof(struct nw_peer_entry)))
 				return -EFAULT;
-			err = nw_free_peer(&pr_info);
+			err = nw_peer_entry_free(&npe);
 			break;
 		case NW_ADD_PEER:
-			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
+			if(copy_from_user(&npe,ifr->ifr_ifru.ifru_data,sizeof(struct nw_peer_entry)))
 				return -EFAULT;
-			err = nw_add_peer(&pr_info);
+			err = nw_peer_entry_add(&npe);
 			break;
 		case NW_DEL_PEER:
-			if(copy_from_user(&pr_info,ifr->ifr_ifru.ifru_data),sizeof(struct nw_peer_info))
+			if(copy_from_user(&npe,ifr->ifr_ifru.ifru_data,sizeof(struct nw_peer_entry)))
 				return -EFAULT;
-			err = nw_del_peer(&pr_info);
+			err = nw_peer_entry_del(&npe);
 			break;
 	
 		default :
@@ -243,23 +261,34 @@ static int nw_ioctl_peer(struct ifreq *ifr)
 	return err;
 }
 
-static int  nw_set_peer( struct nw_peer *pinfo)
+static int  nw_peer_entry_set( struct nw_peer_entry *npe)
 {
-	struct nw_peer *k_pinfo;
+	struct nw_peer_entry *k_pinfo;
 	u32 ret = -EINVAL;
-	k_pinfo = kmalloc(sizeof(struct nw_peer),GFP_KERNEL);
+	k_pinfo = kmalloc(sizeof(struct nw_peer_entry),GFP_KERNEL);
 	if(k_pinfo == NULL)
 		return -ENOMEM;
-	memcpy(k_pinfo,pinfo,sizeof(struct nw_peer));
+	memcpy(k_pinfo,npe,sizeof(struct nw_peer_entry));
 	
 	return 0;
-
 }
-static int nw_add_peer(struct nw_peer *pinfo)
+static int nw_peer_entry_get(struct nw_peer_entry *npe)
 {
 	return 0;
 }
-static in nw_del_peer(struct nw_peer *pinfo)
+static int nw_peer_entry_add(struct nw_peer_entry *npe)
+{
+	return 0;
+}
+static int nw_peer_entry_del(struct nw_peer_entry *npe)
+{
+	return 0;
+}
+static int nw_peer_entry_free(struct nw_peer_entry *npe)
+{
+	return 0;
+}
+static int nw_peer_entry_num(struct nw_peer_entry *npe)
 {
 	return 0;
 }

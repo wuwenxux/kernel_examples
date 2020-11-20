@@ -23,23 +23,40 @@
 #define NW_ADD_PEER						4
 #define NW_DEL_PEER						5
 #define NW_GET_PEER_NUMS				6
+#define NW_SET_DEFPEER					7
+#define NW_DHCP (SIOCDEVPRIVATE + 2)
+
+/*COMMON  */
+#define MAX_QUEUED_PACKETS 1024
+typedef enum mode
+{
+    client,
+    server
+}mode_t ;
+const char * mode_tbl = {"client","server", NULL};
+inline mode_t find_mode(char *sval)
+{
+	mode_t result = client;
+	int i = 0;
+	for (i = 0; mode_tbl[i] != NULL ; ++i,++result)
+		if(0== strcmp(sval,etable[i]))
+			return result;
+	return -1;
+}
 struct nw_peer_entry
 {
 	u32 type;
-	u32 peer_id;
 	struct nw_peer_entry *next;
-	struct in_addr src_addr;
-	u32 ipv4mask;
-	
-	struct in_addr dest_addr;
-	u16 srcport;
-	u16 destport;
-	bool mode; // cli or ser
+	struct in_addr bindip;
+	int bindport;
+	u32 peer_id;
+	mode_t cli_server; // cli or ser
 };
 struct nw_peer_info
 {
 	u32 type;
 	u32 num_of_peers;
+	
 }; 
 
 struct nw_device {

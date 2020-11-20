@@ -2,7 +2,7 @@
 #include <net/sock.h>
 
 #include "compat.h"
-#include "device.h"
+#include "nwdev.h"
 #include "netlink.h"
 
 static struct genl_family genl_family;

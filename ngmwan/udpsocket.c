@@ -1,6 +1,6 @@
 #include <linux/inet.h>
 #include "udpsocket.h"
-#include "device.h"
+#include "nwdev.h"
 
 
 int udpsocket_init(struct net *src_net, struct net_device *dev)

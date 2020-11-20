@@ -3,7 +3,7 @@ DEPMOD ?= depmod
 
 obj-m := ngmwan.o 
 
-ngmwan-objs := main.o device.o netlink.o udpsocket.o
+ngmwan-objs := main.o nwdev.o netlink.o udpsocket.o
 
 KDIR:=/lib/modules/$(shell uname -r)/build
 

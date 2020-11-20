@@ -57,15 +57,13 @@ void nw_debug_print( char *str1, char *str2)
     sprintf(buf,"%s %s", str1, str2);
     perror(buf);
 }
-/*peer info
-int nw_peer_usage(int ,char **);
-int nw_peer_entry_add(int ,char **);
-int nw_peer_entry_del(int ,char **);
+/*peer entry
 int nw_peer_entry_show(int ,char **);
 int nw_peer_get_ent_num(struct nw_peer_info*);
 */
-int nw_peer_set(int ,char**);
-int nw_peer_get(int);
+int nw_peer_usage(int ,char **);
+int nw_peer_entry_add(int ,char **);
+int nw_peer_entry_del(int ,char **);
 //int nw_peer_get_ent(struct nw_)
 
 
