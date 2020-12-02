@@ -12,22 +12,39 @@
 #include <net/addrconf.h>
 #include <linux/uaccess.h>
 
-
 #include "nwdev.h"
 #include "udpsocket.h"
+
+
+/*nw peer entry */
+static struct nw_peer_entry *nw_peer_tbl[NW_PEER_HASH_SIZE];
+static struct nw_peer_info nw_peer_info;
+
+
+static int nw_ioctl(struct net_device *dev,struct ifreq *ifr, int cmd);
 /*peer func*/
-static int  nw_peer_entry_set( struct nw_peer_entry *);
-static int  nw_peer_entry_add( struct nw_peer_entry *);
-static int  nw_peer_entry_del( struct nw_peer_entry *);
-static int  nw_peer_entry_get( struct nw_peer_entry *);
-static int nw_peer_entry_num(struct nw_peer_entry *);
-static int nw_peer_entry_free(struct nw_peer_entry *);
-static int nw_ioctl_peer(struct ifreq *ifr);
-/*dhcp func*/
-static int nw_ioctl_dhcp(struct ifreq *ifr)
+static   void init_nw_peer(void)
 {
-	return 0;
+  /*nw hash table clear */
+  memset(nw_peer_tbl,0,sizeof(nw_peer_tbl));
+  memset(&nw_peer_info,0,sizeof(nw_peer_info));
 }
+static int  nw_peer_entry_set( struct nw_peer_entry *);
+//static int  nw_peer_entry_add( struct nw_peer_entry *);
+static int  nw_peer_entry_get_all(int *p);
+static int  nw_peer_entry_del( struct nw_peer_entry *);
+static int  nw_peer_entry_num(struct nw_peer_entry *);
+static int  nw_peer_entry_free(struct nw_peer_entry *);
+static void nw_peer_entry_free_all(void);
+static int  nw_ioctl_peer(struct ifreq *ifr);
+
+
+
+
+/*dhcp func*/
+
+
+
 
 static int nw_open(struct net_device *dev)
 {
@@ -69,7 +86,7 @@ static int nw_open(struct net_device *dev)
 	return 0;
 }
 
-static int nw_stop(struct net_device *dev)
+static  int nw_stop(struct net_device *dev)
 {
 	struct nw_device *nw = netdev_priv(dev);
 	
@@ -192,106 +209,6 @@ static netdev_tx_t nw_xmit(struct sk_buff *skb, struct net_device *dev)
 	
 	return NETDEV_TX_OK;
 }
-static int nw_ioctl(struct net_device *dev ,struct ifreq *ifr, int cmd)
-{
-
-	struct  nw_device *nw  = netdev_priv(dev);
-	int ret = 0;
-	switch( cmd)
-	{
-		case NW_STATISTIC:
-			if(copy_to_user(ifr->ifr_ifru.ifru_data,nw,sizeof(struct nw_device)))
-				return -EFAULT;
-			break;
-		case NW_PEER:
-			ret = nw_ioctl_peer(ifr);
-			break;
-		case NW_DHCP:
-			ret = nw_ioctl_dhcp(ifr);
-			break;
-		default:
-			ret = -EINVAL;
-	}
-	return ret;
-	
-}
-static int nw_ioctl_peer(struct ifreq *ifr)
-{
-	struct   nw_peer_info pr_info;
-	struct	nw_peer_entry npe;
-	u32 type;
-	int err = 0;
-	if(copy_from_user(&type, ifr->ifr_ifru.ifru_data,sizeof(u32)))
-	{
-		return -EFAULT;
-	}
-	switch(type)
-	{
-		case NW_SET_PEER:
-			if(copy_from_user(&npe,ifr->ifr_ifru.ifru_data,sizeof(struct nw_peer_entry)))
-				return -EFAULT;	
-			err = nw_peer_entry_set( &npe);
-			break;
-		case NW_GET_PEER :
-			if(copy_from_user(&npe,ifr->ifr_ifru.ifru_data,sizeof(struct nw_peer_entry)))
-				return -EFAULT;	
-			err = nw_peer_entry_get(&npe);
-			break;
-		case NW_FREE_PEER:
-			if(copy_from_user(&npe,ifr->ifr_ifru.ifru_data,sizeof(struct nw_peer_entry)))
-				return -EFAULT;
-			err = nw_peer_entry_free(&npe);
-			break;
-		case NW_ADD_PEER:
-			if(copy_from_user(&npe,ifr->ifr_ifru.ifru_data,sizeof(struct nw_peer_entry)))
-				return -EFAULT;
-			err = nw_peer_entry_add(&npe);
-			break;
-		case NW_DEL_PEER:
-			if(copy_from_user(&npe,ifr->ifr_ifru.ifru_data,sizeof(struct nw_peer_entry)))
-				return -EFAULT;
-			err = nw_peer_entry_del(&npe);
-			break;
-	
-		default :
-			err = -EINVAL;
-			printk(KERN_ERR "ngw_ioctl() unknown cmd type(%d)\n ",type);
-			break;
-	}
-	return err;
-}
-
-static int  nw_peer_entry_set( struct nw_peer_entry *npe)
-{
-	struct nw_peer_entry *k_pinfo;
-	u32 ret = -EINVAL;
-	k_pinfo = kmalloc(sizeof(struct nw_peer_entry),GFP_KERNEL);
-	if(k_pinfo == NULL)
-		return -ENOMEM;
-	memcpy(k_pinfo,npe,sizeof(struct nw_peer_entry));
-	
-	return 0;
-}
-static int nw_peer_entry_get(struct nw_peer_entry *npe)
-{
-	return 0;
-}
-static int nw_peer_entry_add(struct nw_peer_entry *npe)
-{
-	return 0;
-}
-static int nw_peer_entry_del(struct nw_peer_entry *npe)
-{
-	return 0;
-}
-static int nw_peer_entry_free(struct nw_peer_entry *npe)
-{
-	return 0;
-}
-static int nw_peer_entry_num(struct nw_peer_entry *npe)
-{
-	return 0;
-}
 static const struct net_device_ops netdev_ops = {
 	.ndo_open		= nw_open,
 	.ndo_stop		= nw_stop,
@@ -300,7 +217,7 @@ static const struct net_device_ops netdev_ops = {
 	.ndo_do_ioctl = nw_ioctl,
 };
 
-static void nw_destruct(struct net_device *dev)
+static void  nw_destruct(struct net_device *dev)
 {
 	struct nw_device *nw = netdev_priv(dev);
 	
@@ -396,7 +313,7 @@ static struct notifier_block netdevice_notifier = {
 	.notifier_call = nw_netdevice_notification
 };
 
-int __init nw_device_init(void)
+int  nw_device_init(void)
 {
 	int ret;
 
@@ -405,7 +322,7 @@ int __init nw_device_init(void)
 	ret = register_netdevice_notifier(&netdevice_notifier);
 	if (ret)
 		goto error_pm;
-
+	init_nw_peer();
 	ret = rtnl_link_register(&link_ops);
 	if (ret)
 		goto error_netdevice;
@@ -418,11 +335,11 @@ error_pm:
 	return ret;
 }
 
-void nw_device_uninit(void)
+void   nw_device_uninit(void)
 {
 	printk("uninit...\n");
-	
 	rtnl_link_unregister(&link_ops);
+	nw_peer_entry_free_all();
 	unregister_netdevice_notifier(&netdevice_notifier);
 	rcu_barrier();
 }
@@ -493,5 +410,147 @@ printk("aa3...\n");
 		napi_schedule(&nw->napi);
 	}*/
 
+}
+
+static  int nw_ioctl(struct net_device *dev ,struct ifreq *ifr, int cmd)
+{
+
+	struct  nw_device *nw  = netdev_priv(dev);
+	int ret = 0;
+	switch( cmd)
+	{
+		case NW_STATISTIC:
+			if(copy_to_user(ifr->ifr_ifru.ifru_data,nw,sizeof(struct nw_device)))
+				return -EFAULT;
+			break;
+		case NW_PEER:
+			ret = nw_ioctl_peer(ifr);
+			break;
+//		case NW_DHCP:
+//			ret = nw_ioctl_dhcp(ifr);
+//			break;
+		default:
+			ret = -EINVAL;
+	}
+	return ret;
+}
+
+
+static inline u32 nw_hash( u32 key,u32 size)
+{
+    return jhash_1word((__force u32)(__be32)(key),size)
+            &(size-1);
+}
+
+
+
+static int  nw_peer_entry_set( struct nw_peer_entry *npe)
+{
+	struct nw_peer_entry *k_p,*k_q;
+	u32 index;
+	k_p = kmalloc(sizeof(struct nw_peer_entry),GFP_KERNEL);
+	if(k_p == NULL)
+		return -ENOMEM;
+	
+	memcpy(k_p,npe,sizeof(struct nw_peer_entry));
+	index = nw_hash(k_p->peerip.sin_addr.s_addr,NW_PEER_HASH_SIZE);
+	k_p->next = NULL ;
+	if(nw_peer_tbl[index] == NULL)
+	{
+		nw_peer_tbl[index] = k_p;
+	}else
+	{
+		/*chain */
+		k_q = nw_peer_tbl[index];
+		for(; k_q->next != NULL; k_q = k_q->next)
+					;
+		k_q->next = k_p;
+	}
+	nw_peer_info.num_of_peers++;
+	return 0;
+}
+static int nw_peer_entry_get_all(int *p)
+{
+	struct nw_peer_entry *ent, *q;
+	int i;
+
+	q = (struct nw_peer_entry *)p;
+
+	for(i = 0; i < NW_PEER_HASH_SIZE;i++)
+	{
+		ent = nw_peer_tbl[i];
+        for(; ent != NULL; ent = ent->next,q++)
+        {
+            if(copy_to_user(q,ent,sizeof(struct nw_peer_entry)))
+                return -EFAULT;
+        }
+	}
+	
+	return 0;
+}
+
+
+static int nw_peer_entry_del(struct nw_peer_entry *npe)
+{
+	return 0;
+}
+static int nw_peer_entry_free(struct nw_peer_entry *npe)
+{
+	struct nw_peer_entry **p, *q;
+	u32 index;
+	return 0;
+}
+static int nw_peer_entry_num(struct nw_peer_entry *npe)
+{
+	return 0;
+}
+static void nw_peer_entry_free_all(void)
+{
+    struct nw_peer_entry *p,*q;
+    int i,j;
+    for(i = 0 ; i < NW_PEER_HASH_SIZE;i++)
+    {
+        for(p = nw_peer_tbl[i],j = 0 ; p != NULL; j++)
+        {
+            q = p->next;
+            kfree(p);
+            nw_peer_info.num_of_peers--;
+            p = q;
+        }
+    }
+}
+
+static int nw_ioctl_peer(struct ifreq *ifr)
+{
+	struct   nw_peer_info pr_info;
+	struct	nw_peer_entry npe;
+	u32 type;
+	int err = 0;
+	if(copy_from_user(&type, ifr->ifr_ifru.ifru_data,sizeof(u32)))
+	{
+		return -EFAULT;
+	}
+	switch(type)
+	{
+		case NW_SET_PEER:
+			if(copy_from_user(&npe,ifr->ifr_ifru.ifru_data,sizeof(struct nw_peer_entry)))
+				return -EFAULT;	
+			err = nw_peer_entry_set( &npe);
+			break;
+		case NW_GET_PEER_ALL :
+			err = nw_peer_entry_get_all(ifr->ifr_ifru.ifru_data);
+			break;
+		case NW_FREE_PEER:
+			if(copy_from_user(&npe,ifr->ifr_ifru.ifru_data,sizeof(struct nw_peer_entry)))
+				return -EFAULT;
+			err = nw_peer_entry_free(&npe);
+			break;
+	
+		default :
+			err = -EINVAL;
+			printk(KERN_ERR "ngw_ioctl() unknown cmd type(%d)\n ",type);
+			break;
+	}
+	return err;
 }
 

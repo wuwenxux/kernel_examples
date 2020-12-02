@@ -15,24 +15,14 @@
 #include <linux/udp.h>
 MODULE_AUTHOR("wafer");
 MODULE_LICENSE("GPL");
-struct ngw_device;
 
-struct multicore_worker {
-	void *ptr;
-	struct work_struct work;
-};
+struct ngw_device;
 
 struct ngw_device
 {
-    struct net_device *dev;
-	struct sock __rcu *sock4;
-    struct work_queue_struct *handshake_recv_wq,*handshake_send_wq;
-	struct sk_buff_head incoming_handshakes;
-	int incoming_handshake_cpu;
+	struct net_device *dev;
 	struct mutex device_update_lock, socket_update_lock;
-    struct multicore_worker __percpu *incoming_handshakes_worker;
 	struct list_head device_list;
-	unsigned int  device_update_gen;
 	u32 fwmark;
 	u16 incoming_port;
 };

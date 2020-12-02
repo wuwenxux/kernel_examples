@@ -8,7 +8,7 @@
                 "/usr/local/include",
                 "/usr/include/x86_64-linux-gnu",
                 "/usr/include",
-                "/usr/src/linux-headers-5.4.0-42-generic/include"
+                "/usr/src/linux-headers-5.4.0-48-generic/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

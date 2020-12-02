@@ -25,19 +25,20 @@
 #define NW_CHKERR_IP_CMD_ERROR -12
 #define NW_CHKERR_IF_NOT_EXIST -13
 #define NW_CHKERR_SWITCH -14
+#define NW_CHKERR_PORT -15
 
 #define max(a,b) ((a)>(b) ? (a):(b))
 
-struct nw_cli_cmd_tbl
+static const char * mode_cst = {"client","server", NULL};
+static  mode_cs find_mode( const char *csval)
 {
-    char *cmd_str;
-    char *cmd_exp;
-    struct nw_cli_cmd_tbl *next;
-    int (*chk_func)(char *, char *);
-    int (*call_func)(int, char **);
-    int max_len;
- };
-
+	mode_cs result = client;
+	int i = 0;
+	for (i = 0; mode_cst[i] != NULL ; ++i,++result)
+		if(0== strcmp(csval,mode_cst[i]))
+			return result;
+	return -1;
+}
 /*system command*/
 typedef struct  nw_sys_cmd_tbl
 {
@@ -64,6 +65,9 @@ int nw_peer_get_ent_num(struct nw_peer_info*);
 int nw_peer_usage(int ,char **);
 int nw_peer_entry_add(int ,char **);
 int nw_peer_entry_del(int ,char **);
+
+int nw_peer_add(int ,char**);
+int nw_peer_get(int);
 //int nw_peer_get_ent(struct nw_)
 
 

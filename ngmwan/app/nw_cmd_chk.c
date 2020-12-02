@@ -7,23 +7,21 @@
 #include <net/if.h>
 #include <arpa/inet.h>
 #include <nw_cli.h>
-
-int nw_chk_ipv4_mask(char *src,char *chk_str)
+#include <linux/types.h>
+int nw_chk_port(char *str, char *chk_str)
 {
-    uint32_t mask;
-    char *p, *q;
-    char tmp[NW_CLI_BUFSIZE];
-    int chk_ret = 0;
-
-    memcpy(tmp,src,(sizeof(tmp) -1 ));
-    
-    p = strtok(tmp,"/");
-    if(p == NULL)
+    int ret ; 
+    u16 temp = 0;
+    char tmp_s[NW_TOKEN_LEN_MAX] = {0};
+    strncpy(tmp_s,str,5);
+    ret = atoi(tmp_s);
+    if(ret < 0 || ret > 65535)
     {
-        return NW_CHKERR_SYNTAX;
+        return NW_CHKERR_PORT;
     }
-    chk_ret = 
+    return 0;
 }
+
 int nw_chk_ipv4(char *str,char *chk_str)
 {
     int digit,i,pos;
@@ -163,16 +161,4 @@ int nw_chk_ifname(char *str, char *chK_str)
     }
     pclose(fp);
     return NW_CHKERR_IF_NOT_EXIST;
-}
-int nw_chk_set_veth(char *str, char *chk_str)
-{
-    int index;
-    if(strlen(str) >= IF_NAMESIZE)
-        return NW_CHKERR_IFNAME_LEN;
-    index = if_nametoindex(str);
-    if(index)
-    {
-        return NW_CHKERR_IF_EXIST;
-    }
-    return 0;
 }

@@ -1035,6 +1035,7 @@ deps_/home/wafer/Documents/project/kernel-examples/nlexample/netlinkKernel.o := 
   include/uapi/linux/random.h \
   include/linux/irqnr.h \
   include/uapi/linux/irqnr.h \
+  include/linux/prandom.h \
   arch/x86/include/asm/archrandom.h \
   include/uapi/linux/net.h \
   include/linux/textsearch.h \

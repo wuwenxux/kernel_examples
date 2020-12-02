@@ -12,6 +12,7 @@
 #define FIRST_MINOR 0
 #define MINOR_CNT 1
 DECLARE_WAIT_QUEUE_HEAD(wq);
+
 static dev_t dev;
 static struct cdev c_dev;
 static struct class *cl;

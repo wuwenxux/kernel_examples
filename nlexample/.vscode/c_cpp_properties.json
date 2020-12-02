@@ -4,7 +4,7 @@
             "name": "Linux Includes",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/src/linux-headers-5.4.0-42-generic/include",
+                "/usr/src/linux-headers-5.4.0-48-generic/include",
                 "/usr/include",
                 "/usr/local/include",
                 "/usr/include/x86_64-linux-gnu"

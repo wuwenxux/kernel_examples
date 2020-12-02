@@ -7,31 +7,8 @@
 #include <netinet/ip.h>
 #include <sys/ioctl.h>
 #include <linux/netdevice.h>
-#include "../nwdev.h"
-#include "nw_cli.h"
-#include "nw_err.h"
+#include "nw_peer_cmd.h"
 
-/* read line max length */
-#define NW_PEER_FILESET_LENGTH_MAX 128
-
-#define PR_SET_FILENAME 2
-#define ENTRY_ADD 0 /*entry add*/
-#define FORMAT_CHK 1 /*format check */
-
-/*option length */
-#define CMD_OPTIONS_MAX 6   /*command size max */
-#define IPV4_LENGTH_MAX 18  /*IPv4 size max */
-#define PEER_PORT_LENGTH_MAX 5  /* port size max*/
-#define PEER_ID_LENGTH_MAX 10 /*peer id size max*/
-#define CMDID_LENGTH_MAX 10 /*cmd ID size max*/
-/*error value */
-#define FORMATERROR -1  /*format error */
-#define CMDERROR -2     /* command error */
-#define SOCKERROR -3     /*socket error */
-
-static void nw_peer_cmd_malloc (char **);
-static void nw_peer_cmd_free(int , char **);
-static int nw_peer_ioctl(void *,int);
 
 
 int nw_peer_usage(int argc, char **argv)
@@ -43,9 +20,9 @@ int nw_peer_usage(int argc, char **argv)
     printf("peer -d default\n");
     printf("peer -f <filepath> default <ipaddr:port> mode");
     printf("Peer Example\n");
-    printf("peer add ser 192.168.1.1 80  1\n");
+    printf("peer add ser 192.168.1.1 80  \n");
     printf("peer del ser 192.168.1.1");
-    printf("peer -f /home/nw1/pr.txt")
+    printf("peer -f /home/nw1/pr.txt");
     return 0;
 }
 static int nw_peer_ioctl(void *p, int kind)
@@ -109,6 +86,8 @@ int nw_peer_entry_add(int argc, char **argv)
       
         inet_pton(AF_INET,argv[3],&npe.bindip);
         
+
+        sprintf (buf, "%u", my_uint16); 
         npe.bindport = atoi(argv[4]);
         npe.peer_id = atoi(argv[5]);
         npe.cli_server = find_mode(argv[6]);
