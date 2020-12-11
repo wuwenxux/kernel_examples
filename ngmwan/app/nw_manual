@@ -1,0 +1,21 @@
+NW 
+Section: Peer config 
+Pattern:
+        peer set <ipv4_addr> <port>  <mode> <peerID>>
+        peer del <ipv4_addr><port><peerid>   
+        peer -f <filepath>
+        peer set default 
+        peer del default
+Description:
+
+examples:
+        nw1>peer set 192.168.1.1  53234 client  3
+        nw1>peer del 192.168.1.1
+        nw1>peer del peerId 3
+        nw1>peer add default (172.191.1.23 23424 client)
+        nw1>peer del default 
+        nw1>peer -f peer.txt
+        ip_addr     port     mode    peer_id
+        192.168.2.1 25342   client     4
+        192.168.2.2 25333   server     5
+        
